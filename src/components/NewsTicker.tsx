@@ -124,18 +124,25 @@ export const NewsTicker = ({ activeScenario }: NewsTickerProps) => {
               </div>
 
               {/* Headline Text */}
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <p className="text-xs sm:text-sm text-foreground leading-tight flex-1 min-w-0 truncate">
-                    {currentItem.text}
-                  </p>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p className="text-xs max-w-sm">
-                    {currentItem.text}
-                  </p>
-                </TooltipContent>
-              </Tooltip>
+              <div className="flex-1 min-w-0 overflow-hidden">
+                <motion.p
+                  className="text-xs sm:text-sm text-foreground leading-tight sm:truncate whitespace-nowrap"
+                  animate={{
+                    x: ["0%", "-50%"]
+                  }}
+                  transition={{
+                    duration: 15,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                  style={{
+                    display: "inline-block",
+                    paddingRight: "100%"
+                  }}
+                >
+                  {currentItem.text} • {currentItem.text}
+                </motion.p>
+              </div>
             </motion.div>
           </AnimatePresence>
         </div>
