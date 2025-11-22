@@ -12,24 +12,32 @@ export const NewsTicker = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
-  // Map transformation to symbiotic for ticker items
-  const scenarioType = activeScenario === "baseline" ? "baseline" : "symbiotic";
+  // Separate items by scenario
+  const baselineItems = tickerItems.filter(item => item.scenario === "baseline");
+  const symbioticItems = tickerItems.filter(item => item.scenario === "symbiotic");
 
-  // Prioritize headlines based on active scenario
-  const sortedItems = [...tickerItems].sort((a, b) => {
-    if (a.scenario === scenarioType && b.scenario !== scenarioType) return -1;
-    if (a.scenario !== scenarioType && b.scenario === scenarioType) return 1;
-    return 0;
-  });
-  const currentItem = sortedItems[currentIndex];
+  // Create alternating array: baseline, symbiotic, baseline, symbiotic, etc.
+  const alternatingItems: TickerItem[] = [];
+  const maxLength = Math.max(baselineItems.length, symbioticItems.length);
+  
+  for (let i = 0; i < maxLength; i++) {
+    if (i < baselineItems.length) {
+      alternatingItems.push(baselineItems[i]);
+    }
+    if (i < symbioticItems.length) {
+      alternatingItems.push(symbioticItems[i]);
+    }
+  }
+  
+  const currentItem = alternatingItems[currentIndex];
   useEffect(() => {
     if (isPaused) return;
     const interval = setInterval(() => {
-      setCurrentIndex(prev => (prev + 1) % sortedItems.length);
+      setCurrentIndex(prev => (prev + 1) % alternatingItems.length);
     }, 20000); // Match animation duration (18s scroll + 1.5s delay + 0.5s buffer)
 
     return () => clearInterval(interval);
-  }, [isPaused, sortedItems.length]);
+  }, [isPaused, alternatingItems.length]);
   const formatDriverTag = (driver: string) => {
     const driverMap: Record<string, string> = {
       labor: "AI & Labor",
