@@ -52,7 +52,7 @@ export const NewsTicker = ({
         <div className="h-full flex items-center px-2 sm:px-4 gap-2 sm:gap-3 overflow-hidden">
           {/* NEWS Label */}
           <div className="flex-shrink-0 px-2 sm:px-3 py-1 bg-foreground text-background text-xs sm:text-sm font-bold rounded">
-            2024 NEWS
+            2040 NEWS
           </div>
           
           <AnimatePresence mode="wait">
