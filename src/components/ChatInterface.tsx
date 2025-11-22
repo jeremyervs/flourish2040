@@ -128,7 +128,7 @@ export const ChatInterface = ({ onClose }: ChatInterfaceProps) => {
       initial={{ opacity: 0, scale: 0.95, y: 20 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.95, y: 20 }}
-      className="fixed bottom-24 right-6 w-[400px] h-[600px] bg-background border rounded-lg shadow-2xl flex flex-col z-50"
+      className="fixed bottom-20 sm:bottom-24 left-4 right-4 sm:left-auto sm:right-6 sm:w-[400px] h-[500px] sm:h-[600px] bg-background border rounded-lg shadow-2xl flex flex-col z-50"
     >
       {/* Header */}
       <div className="flex items-center justify-between p-4 border-b bg-primary text-primary-foreground rounded-t-lg">
