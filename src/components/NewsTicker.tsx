@@ -34,7 +34,7 @@ export const NewsTicker = ({ activeScenario }: NewsTickerProps) => {
 
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % sortedItems.length);
-    }, 19500); // Match animation duration (18s scroll + 1s delay + 0.5s buffer)
+    }, 20000); // Match animation duration (18s scroll + 1.5s delay + 0.5s buffer)
 
     return () => clearInterval(interval);
   }, [isPaused, sortedItems.length]);
@@ -135,7 +135,7 @@ export const NewsTicker = ({ activeScenario }: NewsTickerProps) => {
                     duration: 18,
                     times: [0, 0.02, 1],
                     ease: "linear",
-                    delay: 1
+                    delay: 1.5
                   }}
                   style={{
                     display: "inline-block"
