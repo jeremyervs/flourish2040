@@ -128,19 +128,32 @@ export const ChatInterface = ({ onClose }: ChatInterfaceProps) => {
       initial={{ opacity: 0, scale: 0.95, y: 20 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.95, y: 20 }}
-      className="fixed bottom-20 sm:bottom-24 left-4 right-4 sm:left-auto sm:right-6 sm:w-[400px] h-[500px] sm:h-[600px] bg-background border rounded-lg shadow-2xl flex flex-col z-50"
+      className="fixed bottom-20 sm:bottom-24 left-4 right-4 sm:left-auto sm:right-6 sm:w-[400px] h-[500px] sm:h-[600px] bg-card border rounded-2xl flex flex-col z-50"
+      style={{
+        background: "var(--gradient-card)",
+        borderColor: "hsl(var(--card-border))",
+        boxShadow: "var(--shadow-elevated)",
+      }}
     >
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b bg-primary text-primary-foreground rounded-t-lg">
+      <div 
+        className="flex items-center justify-between p-4 border-b rounded-t-2xl"
+        style={{
+          background: "linear-gradient(135deg, hsl(240 60% 25%) 0%, hsl(240 50% 20%) 100%)",
+          borderColor: "hsl(var(--accent-good) / 0.2)",
+        }}
+      >
         <div className="flex items-center gap-2">
-          <Bot className="w-5 h-5" />
-          <h3 className="font-semibold">Futures Guide</h3>
+          <div className="w-8 h-8 rounded-full bg-accent-good/20 flex items-center justify-center">
+            <Bot className="w-4 h-4 text-accent-good" />
+          </div>
+          <h3 className="font-semibold text-foreground">Futures Guide</h3>
         </div>
         <Button
           variant="ghost"
           size="icon"
           onClick={onClose}
-          className="text-primary-foreground hover:bg-primary-foreground/20"
+          className="text-foreground hover:bg-accent-good/10 hover:text-accent-good"
         >
           <X className="w-4 h-4" />
         </Button>
@@ -159,22 +172,27 @@ export const ChatInterface = ({ onClose }: ChatInterfaceProps) => {
               }`}
             >
               {message.role === "assistant" && (
-                <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
-                  <Bot className="w-4 h-4 text-primary-foreground" />
+                <div 
+                  className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+                  style={{
+                    background: "linear-gradient(135deg, hsl(var(--accent-good)) 0%, hsl(var(--accent-good-dim)) 100%)",
+                  }}
+                >
+                  <Bot className="w-4 h-4 text-background" />
                 </div>
               )}
               <div
-                className={`max-w-[80%] rounded-lg p-3 ${
+                className={`max-w-[80%] rounded-xl p-3 ${
                   message.role === "user"
                     ? "bg-primary text-primary-foreground"
-                    : "bg-muted text-foreground"
+                    : "bg-secondary/60 text-foreground border border-accent-good/20"
                 }`}
               >
                 <p className="text-sm whitespace-pre-wrap">{message.content}</p>
               </div>
               {message.role === "user" && (
-                <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
-                  <User className="w-4 h-4 text-secondary-foreground" />
+                <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+                  <User className="w-4 h-4 text-primary-foreground" />
                 </div>
               )}
             </motion.div>
@@ -185,11 +203,16 @@ export const ChatInterface = ({ onClose }: ChatInterfaceProps) => {
               animate={{ opacity: 1 }}
               className="flex gap-3 justify-start"
             >
-              <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
-                <Bot className="w-4 h-4 text-primary-foreground" />
+              <div 
+                className="w-8 h-8 rounded-full flex items-center justify-center"
+                style={{
+                  background: "linear-gradient(135deg, hsl(var(--accent-good)) 0%, hsl(var(--accent-good-dim)) 100%)",
+                }}
+              >
+                <Bot className="w-4 h-4 text-background" />
               </div>
-              <div className="bg-muted rounded-lg p-3">
-                <Loader2 className="w-4 h-4 animate-spin" />
+              <div className="bg-secondary/60 border border-accent-good/20 rounded-xl p-3">
+                <Loader2 className="w-4 h-4 animate-spin text-accent-good" />
               </div>
             </motion.div>
           )}
@@ -197,7 +220,12 @@ export const ChatInterface = ({ onClose }: ChatInterfaceProps) => {
       </ScrollArea>
 
       {/* Input */}
-      <div className="p-4 border-t">
+      <div 
+        className="p-4 border-t"
+        style={{
+          borderColor: "hsl(var(--accent-good) / 0.15)",
+        }}
+      >
         <div className="flex gap-2">
           <Input
             value={input}
@@ -205,12 +233,13 @@ export const ChatInterface = ({ onClose }: ChatInterfaceProps) => {
             onKeyPress={handleKeyPress}
             placeholder="Ask about the futures..."
             disabled={isLoading}
-            className="flex-1"
+            className="flex-1 bg-secondary/40 border-accent-good/20 focus-visible:ring-accent-good"
           />
           <Button
             onClick={sendMessage}
             disabled={!input.trim() || isLoading}
             size="icon"
+            className="bg-accent-good hover:bg-accent-good-bright text-background"
           >
             {isLoading ? (
               <Loader2 className="w-4 h-4 animate-spin" />

@@ -22,7 +22,10 @@ export const FloatingChatButton = () => {
         <Button
           onClick={() => setIsOpen(!isOpen)}
           size="lg"
-          className="h-12 w-12 sm:h-14 sm:w-14 rounded-full shadow-lg hover:shadow-xl transition-shadow"
+          className="h-12 w-12 sm:h-14 sm:w-14 rounded-full shadow-lg hover:shadow-xl transition-all bg-accent-good hover:bg-accent-good-bright text-background"
+          style={{
+            boxShadow: "var(--glow-soft)",
+          }}
         >
           <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6" />
         </Button>
