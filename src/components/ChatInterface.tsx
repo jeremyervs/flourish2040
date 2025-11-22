@@ -128,7 +128,7 @@ export const ChatInterface = ({ onClose }: ChatInterfaceProps) => {
       initial={{ opacity: 0, scale: 0.95, y: 20 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.95, y: 20 }}
-      className="fixed bottom-20 sm:bottom-24 left-4 right-4 sm:left-auto sm:right-6 sm:w-[400px] h-[500px] sm:h-[600px] bg-card border rounded-2xl flex flex-col z-50"
+      className="fixed bottom-20 sm:bottom-24 top-auto sm:top-24 left-4 right-4 sm:left-auto sm:right-6 sm:w-[400px] max-h-[500px] sm:max-h-[calc(100vh-12rem)] bg-card border rounded-2xl flex flex-col z-50"
       style={{
         background: "var(--gradient-card)",
         borderColor: "hsl(var(--card-border))",
