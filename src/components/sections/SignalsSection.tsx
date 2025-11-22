@@ -48,7 +48,7 @@ const timeline = [
     icon: Zap,
   },
   {
-    date: "Nov 2022",
+    date: "Nov 30, 2022",
     title: "ChatGPT Launch",
     description: "Public AI moment that changed everything about accessibility and adoption.",
     icon: MessageSquare,
