@@ -126,21 +126,22 @@ export const NewsTicker = ({ activeScenario }: NewsTickerProps) => {
               {/* Headline Text */}
               <div className="flex-1 min-w-0 overflow-hidden">
                 <motion.p
-                  className="text-xs sm:text-sm text-foreground leading-tight sm:truncate whitespace-nowrap"
+                  className="text-xs sm:text-sm text-foreground leading-tight whitespace-nowrap"
+                  initial={{ x: "0%" }}
                   animate={{
-                    x: ["0%", "-50%"]
+                    x: [null, "0%", "-100%"]
                   }}
                   transition={{
-                    duration: 15,
-                    repeat: Infinity,
-                    ease: "linear"
+                    duration: 25,
+                    times: [0, 0.02, 1],
+                    ease: "linear",
+                    delay: 0.5
                   }}
                   style={{
-                    display: "inline-block",
-                    paddingRight: "100%"
+                    display: "inline-block"
                   }}
                 >
-                  {currentItem.text} • {currentItem.text}
+                  {currentItem.text}
                 </motion.p>
               </div>
             </motion.div>
