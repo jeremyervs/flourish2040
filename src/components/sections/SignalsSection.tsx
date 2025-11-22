@@ -42,7 +42,7 @@ const signals = [
 
 const timeline = [
   {
-    date: "2017",
+    date: "Jun 12, 2017",
     title: '"Attention Is All You Need"',
     description: "Transformer paper published, enabling modern AI capabilities.",
     icon: Zap,
