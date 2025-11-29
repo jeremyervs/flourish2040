@@ -9,6 +9,7 @@ import { FuturesSection } from "@/components/sections/FuturesSection";
 import { NextStepsSection } from "@/components/sections/NextStepsSection";
 import { ProcessSection } from "@/components/sections/ProcessSection";
 import { NewsTicker } from "@/components/NewsTicker";
+import ChatButton from "@/components/chat/ChatButton";
 
 const Index = () => {
   const [showOverlay, setShowOverlay] = useState(true);
@@ -33,6 +34,7 @@ const Index = () => {
             <ProcessSection />
           </div>
           <NewsTicker activeScenario={activeScenario} />
+          <ChatButton />
         </>
       )}
     </>
